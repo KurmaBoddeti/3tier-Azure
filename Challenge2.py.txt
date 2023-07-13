@@ -1,0 +1,17 @@
+ Challenge 02
+
+
+import requests
+
+def get_instance_metadata():
+    endpoint = "http://169.254.169.254/latest/dynamic/instance-identity/document"
+    response = requests.get(endpoint)
+
+    if response.status_code == 200:
+        return response.json()
+    else:
+        raise Exception("Failed to retrieve instance metadata")
+
+if __name__ == "__main__":
+    metadata = get_instance_metadata()
+    print(metadata)
